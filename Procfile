@@ -1,0 +1,1 @@
+web: bundle exec ruby email_predictor.rb -p $PORT
