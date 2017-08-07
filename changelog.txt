@@ -1,0 +1,14 @@
+ChangeLog
+
+================================ 1
+
+initialized project structure
+
+implemented basic functionality 
+
+added simple rspec testing specs
+
+================================ 2
+
+...
+
