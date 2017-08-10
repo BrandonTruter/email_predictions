@@ -1,16 +1,63 @@
+
 ChangeLog
 
-================================ 1
+================================ Gemfile
 
-initialized project structure
+ADDED:
 
-implemented basic functionality 
+gem 'thin'
+gem 'sinatra'
+gem 'factory_girl'
 
-added simple rspec testing specs
 
-================================ 2
+================================ Procfile
+
+CHANGED:
+
+FROM
+  web: bundle exec ruby ./predict.rb -p $PORT
+  
+TO
+  web: bundle exec thin -R config.ru start -p $PORT -e $RACK_ENV
+
+
+================================ TESTS (factory_girl)
+
+ADDED:
+
+spec/factories/advisor.rb
+
+UPDATED:
+
+spec/spec_helper.rb
+
+
+================================  TODO ~ COMMANDS
+
+Re-implement ARG options:
+
+  ruby ./run_predict_email.rb --all
+  
+  ruby ./run_predict_email.rb --test
+  
+  ruby ./run_predict_email.rb --default
+  
+
+================================  TODO ~ TESTS
+
+Properly run, pass and refactor all specs
+
+Implement recently added factories
+
+
+================================  TODO ~ SERVERS
+
+Changing over to Sinatra or Puma
+
+  config.ru & email_predictor.rb
+  > run Sinatra::Application
+  
+================================  
 
 ...
-
-
 

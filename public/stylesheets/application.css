@@ -14,3 +14,10 @@ body {
 }
 
 a { color: #0000FF; }
+
+span.name {
+  color: #1e83ec; 
+  font-size: 20px; 
+  padding: 0 20px;
+  display: inline-block; 
+}

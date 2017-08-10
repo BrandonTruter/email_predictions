@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Email Predictor App ~ Hosted on Heroku</title>
+    <title>Email Prediction Application</title>
     <link rel='stylesheet' href="/stylesheets/application.css" type="text/css">
   </head>
   <body>
     <div id="container">
-      <h1>Hello World {
-        <span style="color: #787878; display: inline-block; font-size: 20px; padding: 0 20px;">
-          <%= greet_name %>
-        </span> }
-      </h1>
+      <h1>Search Form<span class='name'><%= greet_name %></span></h1>
       <div id="search_form">
         <form action="/search" method="post">
           <input type="text" name="first_name" id="first_name" placeholder="first name ...">

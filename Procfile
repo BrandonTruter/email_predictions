@@ -1,1 +1,1 @@
-web: bundle exec ruby ./predict.rb -p $PORT
+web: bundle exec thin -R config.ru start -p $PORT -e $RACK_ENV

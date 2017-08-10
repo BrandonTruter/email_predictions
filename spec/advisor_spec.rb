@@ -1,8 +1,24 @@
 require 'spec_helper'
 
 RSpec.describe Advisor do
-  let(:advisor) { Advisor.new('steve', 'jobs', 'apple.com') }
+
+  # let(:advisor) { Advisor.new('steve', 'jobs', 'apple.com') }
+  
   let(:predictor) { Predictor.new(advisor) }
+
+
+  # Using factories
+  
+  # Returns a User instance that's not saved
+  user = build(:advisor)
+
+  # Returns a saved User instance
+  user = create(:advisor)
+
+  # Returns a hash of attributes that can be used to build a User instance
+  attrs = attributes_for(:advisor)
+  
+
   
   describe "predicts with advisors" do
     it "first_name_and_last_name pattern" do
