@@ -15,7 +15,11 @@ class EmailPredictor
     when '/' then Rack::Response.new(render("index.html.erb"))
     when '/search'
       Rack::Response.new do |response|
-        response.set_cookie("greet", @request.params["first_name"])
+        fname = @request.params["first_name"]
+        lname = @request.params["last_name"]
+        domain = @request.params["domain"]
+        name = "#{fname}, #{lname} @ #{domain}"
+        response.set_cookie("greet", name)
         response.redirect("/")
       end
     else Rack::Response.new("Not Found", 404)  # ../../public/404.html
@@ -28,7 +32,7 @@ class EmailPredictor
   end
   
   def greet_name
-    @request.cookies["greet"] || "From Sovtech"
+    @request.cookies["greet"] || "Sovtech"
   end
   
 end

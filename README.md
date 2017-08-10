@@ -6,10 +6,15 @@
 ##  Description
 
   Simple command_line app using patterns to predict advisor email addresseses.
+      /predict.rb
+      /lib/dependencies.rb
+      /lib/email_predictor.rb
+  
   
   Also contains a simple rack app to provide a form for making predictions via UI.
       /config.ru
-      /lib/email_prediction_app.rb
+      /email_predictor.rb
+
 
 ===========================================================================================
 
@@ -69,22 +74,28 @@
 
   1. Setup repository:
 
-      $ git clone ........
+      $ git clone https://git.heroku.com/mysterious-hollows-18448.git email_predictor
+
+      $ cd email_predictor
 
       
   2. Run dependencies:
-  
-      $ cd email-predictor/
       
       $ bundle
 
 
-  3. Run Required Commands as mentioned above:
+  3. Use Required Commands:
 
-      $ ruby ./predict.rb  "FirstName Surname" "google.com"
+      $ ruby ./predict.rb  "FirstName Surname" "sovtech.com"
       
-      ,,,
+      $ ruby ./predict_all.rb  "FirstName Surname" "sovtech.com"
+      
+      ... OR ....
       
       $ rackup
       
+      > http://localhost:9292/
+
+
+
 
