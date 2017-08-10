@@ -1,6 +1,6 @@
 require 'erb'
 
-class EmailPredictor
+class EmailPredictionApp
   
   def self.call(env)
     new(env).response.finish
@@ -15,6 +15,11 @@ class EmailPredictor
     when '/' then Rack::Response.new(render("index.html.erb"))
     when '/search'
       Rack::Response.new do |response|
+        
+        # display_name = "#{@request.params['name']}, #{@request.params['domain']}"
+        # response.set_cookie("greet", display_name)
+        
+        # response.set_cookie("greet", @request.params["first_name", "last_name", "domain"])
         response.set_cookie("greet", @request.params["first_name"])
         response.redirect("/")
       end
