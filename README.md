@@ -35,13 +35,11 @@ $ rackup
 
 View at: [http://localhost:9292](http://localhost:9292)
 
-Available paths:
+Available endpoints:
 
-[ROOT](https://mysterious-hollows-18448.herokuapp.com/)
-
-[SEARCH](hhttps://mysterious-hollows-18448.herokuapp.com/search)
-
-[ERRORS](https://mysterious-hollows-18448.herokuapp.com/anything_else)
+> ROOT path ['/'](https://mysterious-hollows-18448.herokuapp.com/)
+> SEARCH path['/search'](https://mysterious-hollows-18448.herokuapp.com/search)
+> ERRORS path ['/anything_else'](https://mysterious-hollows-18448.herokuapp.com/anything_else)
 
   
 ********************************
@@ -59,34 +57,30 @@ There are 2 types of possible predictions:
   2. Using arguments
 
 
-All Predictions:
+#### Default Predictions:
 
-Returns a list of all predictions
-
-```shell
-$ ruby ./predict.rb -a
-$ ruby ./predict.rb --all
-```
-
-Default Predictions:
-
-Returns predictions based on default requirements
+> Returns predictions based on defaults (-d & --default)
 
 ```shell
-$ ruby ./predict.rb -d
 $ ruby ./predict.rb --default
 ```
 
-Filtered Predictions:
+#### All Predictions:
+
+> Returns a list of all predictions (-a & --all)
+
+```shell
+$ ruby ./predict.rb 
+```
+
+#### Filtered Predictions:
 
 > Predictions based on passed arguments 
 
-```shell
 $ ruby ./predict.rb  "FirstName Surname" "domain.com"
-```
-```shell
+
 $ ruby ./predict.rb  "FirstName Surname" "apple.com"
-```
+
 
 Generated output is based on patterns from existing advisors
 
@@ -96,7 +90,7 @@ $ ruby ./predict.rb "FirstName Surname" "google.com"
 ```
 
 Outputs:
-```ruby
+```shell
       ........ FirstName Surname ; google.com ........
     ....................................................
                 firstname.s@google.com
