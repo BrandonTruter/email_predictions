@@ -1,90 +1,148 @@
-
 # Email Predictor
+
+
+Simple app which evaluates patterns based on various filters then returns possible email predictions
+
+Command line:
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+Ruby:
+
+```ruby
+# predict.rb
+require 'email_predictor'
+
+EmailPredictor.new("FirstName Surname", "test.com")
+```
+
+    
+********************************
+
+
+## Rack application
+
+Provides a basic search [UI](https://mysterious-hollows-18448.herokuapp.com) form for
+   predicting email addresses using name and domain filters:
+
+Run by starting up rack with: 
+
+```shell
+$ rackup 
+```
+
+View at: [http://localhost:9292](http://localhost:9292)
+
+Available endpoints:
+  
+['/'](https://mysterious-hollows-18448.herokuapp.com/)
+['/search'](https://mysterious-hollows-18448.herokuapp.com/search)
+['/anything_else'](https://mysterious-hollows-18448.herokuapp.com/anything_else)
+
+  
+********************************
+
+
+## Command line
+
+  
+  ~> Provides basic commands to predicts emails patterns from ARGS options passed to file
+
+  ~> Predictions are based on 'name' & 'domain' args 
+    
+  ~> Offers flags such as '--all' & '--test' for various types of predictions
+          
+  ~> Within the Terminal, using the following command as demonstration for example usage:
+  
+
+```ruby
+# predict.rb
+
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+
+### Usage
+
+There are 2 types of possible predictions:
+
+1. Using flags
+
+2. Using arguments
+
+
+All Predictions:
+
+Returns a list of all predictions
+
+```shell
+$ ruby ./predict.rb -a
+$ ruby ./predict.rb --all
+```
+
+Default Predictions:
+
+Returns predictions based on default requirements
+
+```shell
+$ ruby ./predict.rb -d
+$ ruby ./predict.rb --default
+```
+
+Filtered Predictions:
+
+Predictions based on arguments passed:
+  > First argument is the desired full name
+  > Second argument is domain (...@email_domain)
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "apple.com"
+```
+
+Generated output is based on patterns from existing advisors
+
+For example, passing the following arguments:
+
+```shell
+$ ruby ./predict.rb "FirstName Surname" "google.com"
+```
+
+Returns 2 predictions based on existing 'google.com' patterns:
+  
+
+```ruby
+      ........ FirstName Surname ; google.com ........
+    ....................................................
+                firstname.s@google.com
+                 f.surname@google.com
+```
 
 ********************************
 
-##  Description
-
-  Simple command_line app using patterns to predict advisor email addresseses.
-  
-  Also contains a simple rack app to provide a form for making predictions via UI.
-      /config.ru
-      /lib/email_prediction_app.rb
-
-===========================================================================================
-
-
-## USAGE  (_Rack App_)
-
-  Within the Terminal, running the app with the following command:
-  
-  $ rackup
-  
-  > Visit http://localhost:9292/
-
-
-## USAGE  (_Command line_)
-
-  Within the Terminal, using the following command:
-
-  $ ruby ./predict.rb  "FirstName Surname" "google.com"
-
-        ........ FirstName Surname ; google.com ........
-        ....................................................
-
-          firstname.s@google.com
-          f.surname@google.com
-
-
-  Predicts email patterns based on ARGS options passed to file.
-
-  Example shows 2 predictions because of the following 2 existing google accounts:
-        >  larry.p@google.com
-        >  s.brin@google.com
-
-===========================================================================================
-
-  $ ruby ./predict_all.rb  "FirstName Surname" "gmail.com"
-
-        >  firstname.surname@gmail.com
-        >  firstname.s@gmail.com
-        >  f.surname@gmail.com
-        >  f.s@gmail.com
-
-    Always returns 4-pattern predictions based on provided ARGS.
-        TODO: To be merged into code as a fallback for predictions that can't be made. 
-
-===========================================================================================
-
-  > Displays predictions based on 'name' and 'domain' args
-    
-  > Using flags to display various types of predictions, such as the '--all' or '-a' flags: 
-          $ ruby ./email_predictor.rb -a
-          $ ruby ./email_predictor.rb --all 
-
-
-===========================================================================================
-
 ## Getting Started
 
-  1. Setup repository:
 
-      $ git clone ........
+Clone the repository:
+ 
+```shell
+$ git clone https://github.com/BrandonTruter/email_predictions.git
+```
 
-      
-  2. Run dependencies:
-  
-      $ cd email-predictor/
-      
-      $ bundle
+Navigate to project:
+ 
+```shell
+$ cd email_predictions
+```
 
+Install dependencies:
 
-  3. Run Required Commands as mentioned above:
-
-      $ ruby ./predict.rb  "FirstName Surname" "google.com"
-      
-      ,,,
-      
-      $ rackup
-      
+```shell
+$ bundle
+```
 

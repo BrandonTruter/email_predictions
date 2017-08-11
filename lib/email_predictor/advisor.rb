@@ -1,5 +1,5 @@
 class Advisor
-  attr_accessor :name, :domain, :patterns, :predictions
+  attr_accessor :name, :domain
 
   def initialize(name, domain)
     generate_attributes(name, domain)
@@ -45,5 +45,23 @@ class Advisor
       first_name_dot_last_name
       first_initial_dot_last_name
     end
+  end
+  
+  def help
+
+    # advisor = Advisor.new("John Ferguson", "sovtech.com")
+    # => #<Advisor:0x007fca725e9ab8 @domain="sovtech.com", @name="John Ferguson">
+
+    # advisor.name
+    # => "John Ferguson"
+
+    # advisor.domain
+    # => "sovtech.com"
+
+    # advisor.to_s
+    # => "John Ferguson, sovtech.com"
+
+    # advisor.to_email
+    # => "j.ferguson@sovtech.com"
   end
 end

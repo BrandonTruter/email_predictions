@@ -1,6 +1,6 @@
 require 'erb'
 
-class EmailPredictor
+class App
   
   def self.call(env)
     new(env).response.finish
@@ -15,7 +15,11 @@ class EmailPredictor
     when '/' then Rack::Response.new(render("index.html.erb"))
     when '/search'
       Rack::Response.new do |response|
-        response.set_cookie("greet", @request.params["first_name"])
+        fname = @request.params["first_name"]
+        lname = @request.params["last_name"]
+        domain = @request.params["domain"]
+        name = "#{fname}, #{lname} @ #{domain}"
+        response.set_cookie("greet", name)
         response.redirect("/")
       end
     else Rack::Response.new("Not Found", 404)  # ../../public/404.html
@@ -23,7 +27,7 @@ class EmailPredictor
   end
   
   def render(template)
-    path = File.expand_path("../views/#{template}", __FILE__)
+    path = File.expand_path("../app/views/#{template}", __FILE__)
     ERB.new(File.read(path)).result(binding)
   end
   
