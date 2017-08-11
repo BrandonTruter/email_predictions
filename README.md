@@ -4,15 +4,13 @@
 Simple app which evaluates patterns based on various filters then returns possible email predictions
 
 Command line:
-
 ```shell
 $ ruby ./predict.rb  "FirstName Surname" "domain.com"
 ```
 
 Ruby:
-
 ```ruby
-# predict.rb
+# email_predictor.rb
 require 'email_predictor'
 
 EmailPredictor.new("FirstName Surname", "test.com")
@@ -24,22 +22,26 @@ EmailPredictor.new("FirstName Surname", "test.com")
 
 ## Rack application
 
-Provides a basic search [UI](https://mysterious-hollows-18448.herokuapp.com) form for
+A basic search [UI](https://mysterious-hollows-18448.herokuapp.com) form for
    predicting email addresses using name and domain filters:
 
-Run by starting up rack with: 
 
+### Usage
+
+Start up rack: 
 ```shell
 $ rackup 
 ```
 
 View at: [http://localhost:9292](http://localhost:9292)
 
-Available endpoints:
-  
-['/'](https://mysterious-hollows-18448.herokuapp.com/)
-['/search'](https://mysterious-hollows-18448.herokuapp.com/search)
-['/anything_else'](https://mysterious-hollows-18448.herokuapp.com/anything_else)
+Available paths:
+
+[ROOT](https://mysterious-hollows-18448.herokuapp.com/)
+
+[SEARCH](hhttps://mysterious-hollows-18448.herokuapp.com/search)
+
+[ERRORS](https://mysterious-hollows-18448.herokuapp.com/anything_else)
 
   
 ********************************
@@ -47,30 +49,14 @@ Available endpoints:
 
 ## Command line
 
-  
-  ~> Provides basic commands to predicts emails patterns from ARGS options passed to file
-
-  ~> Predictions are based on 'name' & 'domain' args 
-    
-  ~> Offers flags such as '--all' & '--test' for various types of predictions
-          
-  ~> Within the Terminal, using the following command as demonstration for example usage:
-  
-
-```ruby
-# predict.rb
-
-$ ruby ./predict.rb  "FirstName Surname" "domain.com"
-```
+A ruby file which provides a set of commands to predict possible email addresses
 
 
 ### Usage
 
 There are 2 types of possible predictions:
-
-1. Using flags
-
-2. Using arguments
+  1. Using flags
+  2. Using arguments
 
 
 All Predictions:
@@ -93,14 +79,11 @@ $ ruby ./predict.rb --default
 
 Filtered Predictions:
 
-Predictions based on arguments passed:
-  > First argument is the desired full name
-  > Second argument is domain (...@email_domain)
+> Predictions based on passed arguments 
 
 ```shell
 $ ruby ./predict.rb  "FirstName Surname" "domain.com"
 ```
-
 ```shell
 $ ruby ./predict.rb  "FirstName Surname" "apple.com"
 ```
@@ -108,14 +91,11 @@ $ ruby ./predict.rb  "FirstName Surname" "apple.com"
 Generated output is based on patterns from existing advisors
 
 For example, passing the following arguments:
-
 ```shell
 $ ruby ./predict.rb "FirstName Surname" "google.com"
 ```
 
-Returns 2 predictions based on existing 'google.com' patterns:
-  
-
+Outputs:
 ```ruby
       ........ FirstName Surname ; google.com ........
     ....................................................
@@ -123,25 +103,25 @@ Returns 2 predictions based on existing 'google.com' patterns:
                  f.surname@google.com
 ```
 
+Returns 2 predictions based on all existing 'google.com' patterns:
+
+
 ********************************
 
 ## Getting Started
 
 
 Clone the repository:
- 
 ```shell
 $ git clone https://github.com/BrandonTruter/email_predictions.git
 ```
 
 Navigate to project:
- 
 ```shell
 $ cd email_predictions
 ```
 
 Install dependencies:
-
 ```shell
 $ bundle
 ```
