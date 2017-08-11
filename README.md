@@ -1,27 +1,52 @@
 # Email Predictor
 
-    Email prediction app to determine patterns and generate possible predictions
 
+Simple app which evaluates patterns based on various filters then returns possible email predictions
 
+Command line:
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+Ruby:
+
+```ruby
+# predict.rb
+require 'email_predictor'
+
+EmailPredictor.new("FirstName Surname", "test.com")
+```
+
+    
 ********************************
 
 
 ## Rack application
 
-  ~> A simple rack app to provide a form for entering name & domain for email predictions:
+Provides a basic search [UI](https://mysterious-hollows-18448.herokuapp.com) form for
+   predicting email addresses using name and domain filters:
 
-  ~> Start the rack server using following command then open the link in a browser:
-  
-    $ rackup 
-  
-    > Visit http://localhost:9292
-      Search Form: '/' or '/search'
-      Error Form: '/anything_else'
-  
+Run by starting up rack with: 
 
-===========================================================================================
+```shell
+$ rackup 
+```
+
+View at: [http://localhost:9292](http://localhost:9292)
+
+Available endpoints:
+  
+['/'](https://mysterious-hollows-18448.herokuapp.com/)
+['/search'](https://mysterious-hollows-18448.herokuapp.com/search)
+['/anything_else'](https://mysterious-hollows-18448.herokuapp.com/anything_else)
+
+  
+********************************
+
 
 ## Command line
+
   
   ~> Provides basic commands to predicts emails patterns from ARGS options passed to file
 
@@ -31,60 +56,93 @@
           
   ~> Within the Terminal, using the following command as demonstration for example usage:
   
-    ```
-      $ ruby ./predict.rb  "FirstName Surname" "google.com"
-    ```
+
+```ruby
+# predict.rb
+
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+
+### Usage
+
+There are 2 types of possible predictions:
+
+1. Using flags
+
+2. Using arguments
+
+
+All Predictions:
+
+Returns a list of all predictions
+
+```shell
+$ ruby ./predict.rb -a
+$ ruby ./predict.rb --all
+```
+
+Default Predictions:
+
+Returns predictions based on default requirements
+
+```shell
+$ ruby ./predict.rb -d
+$ ruby ./predict.rb --default
+```
+
+Filtered Predictions:
+
+Predictions based on arguments passed:
+  > First argument is the desired full name
+  > Second argument is domain (...@email_domain)
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "domain.com"
+```
+
+```shell
+$ ruby ./predict.rb  "FirstName Surname" "apple.com"
+```
+
+Generated output is based on patterns from existing advisors
+
+For example, passing the following arguments:
+
+```shell
+$ ruby ./predict.rb "FirstName Surname" "google.com"
+```
+
+Returns 2 predictions based on existing 'google.com' patterns:
   
-  Output:
-      
-    ........ FirstName Surname ; google.com ........
+
+```ruby
+      ........ FirstName Surname ; google.com ........
     ....................................................
-    
-      firstname.s@google.com
-      f.surname@google.com
-
-
-  Explanation: Generate 2 predictions because of the following 2 existing google accounts:
-                >  larry.p@google.com
-                >  s.brin@google.com
-
+                firstname.s@google.com
+                 f.surname@google.com
+```
 
 ********************************
 
 ## Getting Started
 
 
-### Installation
+Clone the repository:
+ 
+```shell
+$ git clone https://github.com/BrandonTruter/email_predictions.git
+```
 
-  1. Setup repository:
+Navigate to project:
+ 
+```shell
+$ cd email_predictions
+```
 
-        $ git clone https://git.heroku.com/mysterious-hollows-18448.git email_predictor
+Install dependencies:
 
-        $ cd email_predictor
-      
-  2. Run dependencies:      
-
-        $ bundle
-
-
-### Usage
-
-  1. Using the command line via ruby scripts:
-  
-      $ ruby ./predict.rb  "FirstName Surname" "sovtech.com"
-      $ ruby ./predict_all.rb  "FirstName Surname" "sovtech.com"
-      
-      => predict.rb
-      => lib/email_predictor.rb
-      
-      
-  2. Using the browser via UI rack app:
-  
-      $ rackup
-      
-      > http://localhost:9292/
-      > http://localhost:9292/search
-
-      => /config.ru
-      => /email_predictor.rb
+```shell
+$ bundle
+```
 

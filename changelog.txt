@@ -4,60 +4,58 @@ ChangeLog
 ================================ Gemfile
 
 ADDED:
-
-gem 'thin'
-gem 'sinatra'
-gem 'factory_girl'
-
+  gem 'thin'
+  gem 'sinatra'
+  gem 'factory_girl'
 
 ================================ Procfile
 
 CHANGED:
 
-FROM
-  web: bundle exec ruby ./predict.rb -p $PORT
-  
-TO
-  web: bundle exec thin -R config.ru start -p $PORT -e $RACK_ENV
+  FROM
+    web: bundle exec ruby ./predict.rb -p $PORT
+    
+  TO
+    web: bundle exec thin -R config.ru start -p $PORT -e $RACK_ENV
 
 
 ================================ TESTS (factory_girl)
 
 ADDED:
-
-spec/factories/advisor.rb
+  spec/factories/advisor.rb
 
 UPDATED:
-
-spec/spec_helper.rb
-
+  spec/spec_helper.rb
 
 ================================  TODO ~ COMMANDS
 
-Re-implement ARG options:
-
+Re-implement and test ARG options:
   ruby ./run_predict_email.rb --all
-  
-  ruby ./run_predict_email.rb --test
-  
   ruby ./run_predict_email.rb --default
   
 
 ================================  TODO ~ TESTS
 
 Properly run, pass and refactor all specs
-
 Implement recently added factories
 
 
-================================  TODO ~ SERVERS
+================================  TODO ~ UI
 
-Changing over to Sinatra or Puma
+Add functionality to predict advisors using form params:
+  -> email_predictor.rb
 
-  config.ru & email_predictor.rb
-  > run Sinatra::Application
-  
-================================  
+Create partial to show predicted results:
+  -> views/index.html.erb
 
-...
+Implement company-specific site styling:
+  -> public/stylesheets/application.css
+
+Assign proper error pages based on response:
+  -> public/html/404.html
+  -> public/html/500.html
+
+
+.................................................................
+
 
