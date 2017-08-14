@@ -1,3 +1,3 @@
-require './lib/predictions'
+require './lib/dependencies'
 
-Predictions.new.run
+Predictor.new.run
