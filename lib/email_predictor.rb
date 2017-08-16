@@ -35,10 +35,10 @@ class EmailPredictor
   
   def process_unknown
     puts ""
-    puts "unknown request (invalid args)"
-    puts ""
-    puts "Processing defaults"
+    puts "Normal request (no params or args)"
+    puts "----------------------------------"
     process_defaults
+    puts ""
   end
   
   # Predicting ALL Advisors
