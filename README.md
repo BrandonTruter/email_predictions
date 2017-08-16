@@ -84,6 +84,3 @@ $ rackup
 View at: [http://localhost:9292](http://localhost:9292)
 
 
-
-
- git push github HEAD:master
