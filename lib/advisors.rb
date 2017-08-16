@@ -1,4 +1,4 @@
-class Advisor
+class Advisors
   attr_accessor :name, :first_name, :last_name, :domain, :patterns, :client_base 
   
   def initialize(name, domain)
@@ -135,5 +135,4 @@ class Advisor
       "Barack Obama" => "whitehouse.gov"
     }
   end
-  
 end

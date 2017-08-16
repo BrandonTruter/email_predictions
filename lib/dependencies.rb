@@ -1,3 +1,4 @@
-require './lib/advisor'
-require './lib/email_predictor'
-# require './lib/email_predictor'
+require 'optparse'
+require_relative './advisors'
+require_relative './predictor'
+require_relative './email_predictor'
